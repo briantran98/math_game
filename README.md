@@ -26,6 +26,8 @@ Good bye!
 	- The player will be answering math questions that are asked and their score will be tracked in their state
  - Announcer
 	- The announcer will be giving the one displaying the information along with whenver there is a new turn and the final score at the end of the game/round
+ - Game
+	- Will keep track of current player and loop through the game until there is a winner
 
 ### Player
  - States
@@ -39,11 +41,21 @@ Good bye!
 
 ### Announcer
  - States
-	- Current Player
+	- None
  - Method
 	- Asking math questions
 	- Report score
-	- Check if game is over
-	- run the loop
- - Initialize
-	- Current Player
+	- Announce new turn
+	- Announce game over
+	- Check for right answer
+
+### Game
+ - States
+	- Players
+	- Current player
+	- Announcer
+	- Game status
+ - Method
+	- Run loop
+	- Switch current player
+	- Check for winner
