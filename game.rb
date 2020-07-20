@@ -1,6 +1,7 @@
 class Game
 	attr_accessor :current_player, :game_over
 	attr_reader :announcer, :players
+
 	def initialize(p1, p2, announcer)
 		@players = [p1, p2]
 		@current_player = p1
@@ -9,16 +10,19 @@ class Game
 	end
 
 	def start
-		count = 0
 		while !game_over do
 			#If return from announcer.question is false take life away from current player
 			if (announcer.question(self.current_player.name))
 				self.current_player.lose_life
 			end
+
 			announcer.score(players[0].lives, players[1].lives)
+
 			won?
+
 			change_current_player
 		end
+
 		announcer.end
 	end
 
@@ -32,6 +36,7 @@ class Game
 		end
 	end
 
+	# Checks if current players score is 0 if so then other player wins
 	def won?
 		if(current_player.lives == 0)
 			announcer.winner(current_player == players[0] ? players[1] : players[0])
